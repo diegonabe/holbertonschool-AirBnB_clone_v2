@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This is the file storage class for AirBnB"""
+"""Este archivo crea una clase FileStorage para el AirBnB"""
 import json
 from models.base_model import BaseModel
 from models.user import User
@@ -12,19 +12,19 @@ import shlex
 
 
 class FileStorage:
-    """This class serializes instances to a JSON file and
-    deserializes JSON file to instances
-    Attributes:
-        __file_path: path to the JSON file
-        __objects: objects will be stored
+    """Esta clase serializa instancias a un archivo JSON y
+   deserializa un archivo JSON a instancias
+   Atributos:
+       __file_path: ruta al archivo JSON
+       __objects: objetos que se almacenarán
     """
     __file_path = "file.json"
     __objects = {}
 
     def all(self, cls=None):
-        """returns a dictionary
+        """retorna un dict
         Return:
-            returns a dictionary of __object
+            retorna un dict of __object
         """
         dic = {}
         if cls:
@@ -39,16 +39,16 @@ class FileStorage:
             return self.__objects
 
     def new(self, obj):
-        """sets __object to given obj
+        """sets __object obj
         Args:
-            obj: given object
+            obj: objeto dado
         """
         if obj:
             key = "{}.{}".format(type(obj).__name__, obj.id)
             self.__objects[key] = obj
 
     def save(self):
-        """serialize the file path to JSON file path
+        """serializa la ruta del archivo a la ruta del archivo JSON
         """
         my_dict = {}
         for key, value in self.__objects.items():
@@ -57,7 +57,7 @@ class FileStorage:
             json.dump(my_dict, f)
 
     def reload(self):
-        """serialize the file path to JSON file path
+        """serializa la ruta del archivo a la ruta del archivo JSON
         """
         try:
             with open(self.__file_path, 'r', encoding="UTF-8") as f:
@@ -68,13 +68,13 @@ class FileStorage:
             pass
 
     def delete(self, obj=None):
-        """ delete an existing element
+        """ borra el elemento existente
         """
         if obj:
             key = "{}.{}".format(type(obj).__name__, obj.id)
             del self.__objects[key]
 
     def close(self):
-        """ calls reload()
+        """ llama reload()
         """
         self.reload()
