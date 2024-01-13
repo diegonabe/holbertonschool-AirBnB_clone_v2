@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-"""Inicia la aplicación web Flask
+"""HolbertonBnB main Flask application.
 
-Aplicación listens a 0.0.0.0, puerto 5000.
+The application listens on host IP 0.0.0.0, port 5000.
 Routes:
-    /: Retorna 'Hello HBNB!'
+    /hbnb: HBnB home page.
 """
 from flask import Flask
 app = Flask(__name__)
