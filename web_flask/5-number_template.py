@@ -8,9 +8,9 @@ Routes:
     /c/<text>: Displays 'C' followed by the value of <text>.
     /python/(<text>): Displays 'Python' followed by the value of <text>.
     /number/<n>: Displays 'n is a number' only if <n> is an integer.
+    /number_template/<n>: display a HTML page only if n is an integer
 """
 from flask import Flask
-from flask import abort
 
 app = Flask(__name__)
 
@@ -53,6 +53,7 @@ def number(n):
     """Displays 'n is a number' only if n is an integer."""
     return "{} is a number".format(n)
 
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0")
+@app.route("/number/<int:n>", strict_slashes=False)
+def number(n):
+    """Displays 'n is a number' only if n is an integer."""
+    return "{} is a number".format(n)
