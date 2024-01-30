@@ -13,6 +13,7 @@ def hello_hbnb():
     """Displays 'Hello HBNB!'"""
     return "Hello HBNB!"
 
+
 if __name__ == "__main__":
     # Starts the Flask development server
     # Listen on all networks interfaces (0.0.0.0) and port 5000
